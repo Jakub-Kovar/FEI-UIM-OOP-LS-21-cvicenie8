@@ -13,6 +13,7 @@ public class Main extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(200, 200);
         this.setVisible(true);
-        this.add(new MyFakeCanvas());
+        var canvas = new MyFakeCanvas();
+        this.add(canvas);
     }
 }
