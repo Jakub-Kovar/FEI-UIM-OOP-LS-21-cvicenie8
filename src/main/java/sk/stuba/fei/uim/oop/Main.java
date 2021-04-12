@@ -3,17 +3,27 @@ package sk.stuba.fei.uim.oop;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.*;
 
-public class Main extends JFrame {
+public class Main{
     public static void main(String[] args) {
-        new Main();
-    }
+        File myFile = new File("src"+File.separator+"main"+File.separator+"resources"+File.separator+"myTextFile");
+        FileReader fileReader;
+        try {
+             fileReader = new FileReader(myFile);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            return;
+        }
 
-    public Main() throws HeadlessException {
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(200, 200);
-        this.setVisible(true);
-        var canvas = new MyFakeCanvas();
-        this.add(canvas);
+        BufferedReader reader = new BufferedReader(fileReader);
+
+        try {
+            for (String line = reader.readLine(); line != null; line = reader.readLine()) {
+                System.out.println(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
