@@ -1,17 +1,13 @@
 package sk.stuba.fei.uim.oop;
 
+import java.util.ArrayList;
+
 public class Main {
     public static void main(String[] args) {
-        vonkajsiFor:
-        for (int i = 1; i < 100; i++) {
-            for (int j = 10; j > 0; j--) {
-                System.out.println("---");
-                if (i%4 == 0) {
-                    break vonkajsiFor;
-                }
-                System.out.println(i + ", " + j);
-            }
-        }
-        System.out.println("koniec");
+        ConcreteIndex concreteIndex = new ConcreteIndex();
+        concreteIndex.add(new Message("hello"));
+        concreteIndex.add(new Message("world"));
+        concreteIndex.add(new Message("hello world"));
+        System.out.println(concreteIndex.toString());
     }
 }
