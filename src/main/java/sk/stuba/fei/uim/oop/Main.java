@@ -7,16 +7,16 @@ import java.io.*;
 
 public class Main{
     public static void main(String[] args) {
-        File myFile = new File("src"+File.separator+"main"+File.separator+"resources"+File.separator+"myTextFile");
-        FileReader fileReader;
-        try {
-             fileReader = new FileReader(myFile);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+        InputStream is = Main.class.getClassLoader().getResourceAsStream("myTextFile");
+
+        if(is == null) {
+            System.out.println("'myTextFile' nie je v resourceoch");
             return;
         }
 
-        BufferedReader reader = new BufferedReader(fileReader);
+        InputStreamReader isr = new InputStreamReader(is);
+
+        BufferedReader reader = new BufferedReader(isr);
 
         try {
             for (String line = reader.readLine(); line != null; line = reader.readLine()) {
