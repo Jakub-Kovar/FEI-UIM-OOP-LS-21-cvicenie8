@@ -4,12 +4,13 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-        InterfaceIndex ci = new InterfaceIndex();
-        ci.add(new Message("hello"));
-        ci.add(new Message("world"));
+        InterfaceIndex<Address> ci = new InterfaceIndex<>();
         ci.add(new Address("hodzovo nam.", "80204"));
-        var old = ci.add(new Message("hello world"));
+        ci.add(new Address("hlavna ulica", "12345"));
+        var old = ci.add(new Address("hlinena ulica", "54321"));
 
-        System.out.println(old);
+        for(Address a : old) {
+            System.out.println(a.getPsc() + " " + a.getAddress());
+        }
     }
 }
